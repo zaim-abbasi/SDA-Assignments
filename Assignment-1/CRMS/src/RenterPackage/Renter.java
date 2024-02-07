@@ -1,6 +1,8 @@
 package RenterPackage;
 
 import CarPackage.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Renter {
@@ -19,9 +21,15 @@ public abstract class Renter {
     this.phoneNumber = phoneNumber;
     this.address = address;
     this.totalRentalFee = 0.0; // Initialize total rental fee
+    this.rentedCars = new ArrayList<>(); // Initialize rentedCars list
   }
 
+  
   public abstract double calculateDiscountedRate(double baseRent);
+
+  public boolean hasRentedCars() {
+    return rentedCars != null && !rentedCars.isEmpty();
+  }
 
   // all getters
   public String getRenterId() {
@@ -82,8 +90,13 @@ public abstract class Renter {
   }
 
   public void addRentedCar(Car car) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'addRentedCar'");
+    rentedCars.add(car);
   }
 
+  @Override
+  public String toString() {
+    // Return a string representation of Renter details
+    return String.format("Renter ID: %s, Name: %s, Email: %s, Phone: %s, Address: %s",
+            renterId, name, email, phoneNumber, address);
+  }
 }

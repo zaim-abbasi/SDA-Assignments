@@ -2,11 +2,11 @@ package CarPackage;
 
 public class SUV extends Car {
   private boolean insurable;
+  private final double INSURANCE_PERCENTAGE = 0.1; // Fixed percentage for insurance
   private final double MINIMUM_DAMAGE_COST = 50.0; // Adjust as needed
 
-  public SUV(String carId, String brand, String model, int year, String plateNumber, boolean insurable) {
+  public SUV(String carId, String brand, String model, int year, String plateNumber) {
     super(carId, brand, model, year, plateNumber);
-    this.insurable = insurable;
   }
 
   @Override
@@ -20,24 +20,24 @@ public class SUV extends Car {
   public double calculateInsuranceCost() {
     // Implement the insurance cost calculation for SUV
     // Fixed percentage of the base rent
-    return getBaseRent() * 0.1; // Adjust the percentage as needed
+    return getBaseRent() * INSURANCE_PERCENTAGE; // Adjust the percentage as needed
   }
 
   @Override
   public double calculateTotalCost() {
     // Total cost includes base rent and distance cost
-    return getBaseRent();
+    return calculateRent(0) + calculateInsuranceCost();
   }
 
   @Override
   public boolean isInsurable() {
-    return insurable;
+    return true;
   }
 
   @Override
   public boolean hasInsurance() {
     // You need to define the logic for whether SUV has insurance
-    return false; // Placeholder, replace with actual logic
+    return true; // Placeholder, replace with actual logic
   }
 
   // Other methods specific to SUV
@@ -51,6 +51,11 @@ public class SUV extends Car {
   public String toString() {
     return super.toString() +
         "\nInsurable: " + insurable + "\n";
+  }
+
+  @Override
+  public double getMinimumDamageCost() {
+    return MINIMUM_DAMAGE_COST;
   }
 
 }

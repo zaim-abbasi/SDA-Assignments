@@ -1,5 +1,6 @@
 import CarPackage.*;
 import RenterPackage.*;
+
 public class RentalTransaction {
   private Renter renter;
   private Car car;
@@ -20,15 +21,41 @@ public class RentalTransaction {
   public double calculateTotalCost() {
     double totalCost = car.calculateRent(distance);
     if (insuranceAdded) {
-      //totalCost += car.calculateInsuranceCost();
+      totalCost += car.calculateInsuranceCost();
     }
     return totalCost;
   }
 
-  // public double calculateDamageCost() {
-  //   //return car.calculateDamageCost();
-  // }
+  public double calculateDamageCost() {
+    return car.calculateDamageCost();
+  }
 
-  // Getters and other methods
-  // ...
+  // Getters
+  public Renter getRenter() {
+    return renter;
+  }
+
+  public Car getCar() {
+    return car;
+  }
+
+  public double getDistance() {
+    return distance;
+  }
+
+  public boolean isInsuranceAdded() {
+    return insuranceAdded;
+  }
+
+  // Setters (if needed)
+
+  @Override
+  public String toString() {
+    return "RentalTransaction{" +
+        "renter=" + renter +
+        ", car=" + car +
+        ", distance=" + distance +
+        ", insuranceAdded=" + insuranceAdded +
+        '}';
+  }
 }

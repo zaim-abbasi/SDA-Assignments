@@ -90,6 +90,9 @@ public abstract class Car {
 
   public abstract boolean hasInsurance();
 
+
+  public abstract double getMinimumDamageCost();
+
   public double calculateDamageCost() {
     double totalCost = calculateTotalCost();
 
@@ -120,6 +123,10 @@ public abstract class Car {
         "\nRental Status: " + rentalStatus +
         "\nRental Fee: " + rentalFee +
         "\nPlate Number: " + plateNumber;
+  }
+
+  public void setRented(boolean rentalStatus) {
+    this.rentalStatus = rentalStatus;
   }
 
 }

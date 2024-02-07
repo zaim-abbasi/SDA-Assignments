@@ -2,6 +2,7 @@ package CarPackage;
 
 public class LuxuryCar extends Car {
   private double luxuryTax;
+  private final double INSURANCE_PERCENTAGE = 0.1; // Fixed percentage for insurance
   private final double MINIMUM_DAMAGE_COST = 100.0; // Adjust as needed
 
   public LuxuryCar(String carId, String brand, String model, int year, String plateNumber, double luxuryTax) {
@@ -20,13 +21,13 @@ public class LuxuryCar extends Car {
   public double calculateInsuranceCost() {
     // Implement the insurance cost calculation for LuxuryCar
     // Fixed percentage of the base rent
-    return getBaseRent() * 0.1; // Adjust the percentage as needed
+    return getBaseRent() * INSURANCE_PERCENTAGE; // Adjust the percentage as needed
   }
 
   @Override
   public double calculateTotalCost() {
     // Total cost includes base rent, distance cost, and luxury tax
-    return getBaseRent() + luxuryTax;
+    return calculateRent(0) + calculateInsuranceCost();
   }
 
   @Override
@@ -37,7 +38,7 @@ public class LuxuryCar extends Car {
   @Override
   public boolean hasInsurance() {
     // You need to define the logic for whether LuxuryCar has insurance
-    return false; // Placeholder, replace with actual logic
+    return true; // Placeholder, replace with actual logic
   }
 
   // Other methods specific to LuxuryCar
@@ -51,6 +52,11 @@ public class LuxuryCar extends Car {
   public String toString() {
     return super.toString() +
         "\nLuxury Tax: " + luxuryTax + "\n";
+  }
+
+  @Override
+  public double getMinimumDamageCost() {
+    return MINIMUM_DAMAGE_COST;
   }
 
 }

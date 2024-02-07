@@ -9,10 +9,8 @@ public class CompactCar extends Car {
 
   @Override
   public double calculateRent(double distance) {
-    // Implement the rent calculation for CompactCar
-    // Base rent + distance traveled cost for compact cars
-    // You need to define the base rent and distance cost formula
-    return 0.0; // Placeholder, replace with actual calculation
+    // return base rent + distance traveled cost for CompactCar
+    return getBaseRent() + distance;
   }
 
   @Override
@@ -43,4 +41,8 @@ public class CompactCar extends Car {
     return 50.0; // Adjust as needed
   }
   // Other methods specific to CompactCar
+  @Override
+  public double getMinimumDamageCost() {
+    return MINIMUM_DAMAGE_COST;
+  }
 }
