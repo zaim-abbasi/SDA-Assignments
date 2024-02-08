@@ -8,6 +8,7 @@ public abstract class Car {
   private boolean rentalStatus;
   private double rentalFee;
   private String plateNumber;
+  private Double distance;
 
   private final double DAMAGE_COST_PERCENTAGE = 0.1; // 10% for example
 
@@ -90,7 +91,6 @@ public abstract class Car {
 
   public abstract boolean hasInsurance();
 
-
   public abstract double getMinimumDamageCost();
 
   public double calculateDamageCost() {
@@ -111,22 +111,31 @@ public abstract class Car {
 
     return damageCost;
   }
-  
+
   public abstract double getBaseRent();
 
   @Override
   public String toString() {
-    return "\n" + "Car ID: " + carId +
+    return "\nCar Type: " + getCarType() +
+        "\nCar ID: " + carId +
         "\nBrand: " + brand +
         "\nModel: " + model +
         "\nYear: " + year +
-        "\nRental Status: " + rentalStatus +
-        "\nRental Fee: " + rentalFee +
         "\nPlate Number: " + plateNumber;
   }
 
+  public abstract String getCarType(); // Abstract method to be implemented in each subclass
+
   public void setRented(boolean rentalStatus) {
     this.rentalStatus = rentalStatus;
+  }
+
+  public void setDistance(Double distance) {
+    this.distance = distance;
+  }
+
+  public Double getDistance() {
+    return distance;
   }
 
 }

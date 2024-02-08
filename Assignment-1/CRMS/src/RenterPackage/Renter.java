@@ -24,7 +24,6 @@ public abstract class Renter {
     this.rentedCars = new ArrayList<>(); // Initialize rentedCars list
   }
 
-  
   public abstract double calculateDiscountedRate(double baseRent);
 
   public boolean hasRentedCars() {
@@ -95,8 +94,34 @@ public abstract class Renter {
 
   @Override
   public String toString() {
-    // Return a string representation of Renter details
-    return String.format("Renter ID: %s, Name: %s, Email: %s, Phone: %s, Address: %s",
-            renterId, name, email, phoneNumber, address);
+    return "\nRenter Type: " + getRenterType() +
+        "\nRenter ID: " + renterId +
+        "\nName: " + name +
+        "\nEmail: " + email +
+        "\nPhone Number: " + phoneNumber +
+        "\nAddress: " + address;
   }
+
+  public abstract String getRenterType();
+
+  public void displayRentedCars() {
+    System.out.println("Rented Cars:");
+    for (Car car : rentedCars) {
+      System.out.println(car);
+    }
+  }
+
+  public Car findRentedCarById(String carId) {
+    for (Car car : rentedCars) {
+      if (car.getCarId().equals(carId)) {
+        return car;
+      }
+    }
+    return null;
+  }
+
+  public void removeRentedCar(Car car) {
+    rentedCars.remove(car);
+  }
+
 }

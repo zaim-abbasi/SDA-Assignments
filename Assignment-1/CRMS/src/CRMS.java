@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import CarPackage.*;
 import RenterPackage.*;
 
@@ -18,7 +20,7 @@ public class CRMS {
   public void addNewCar(Car car) {
     cars.add(car);
   }
-  
+
   public Renter findRenterById(String renterId) {
     for (Renter renter : renters) {
       if (renter.getRenterId().equals(renterId)) {
@@ -36,7 +38,6 @@ public class CRMS {
       }
     }
   }
-
 
   public void removeCar(Car car) {
     if (!car.isRented()) {
@@ -78,7 +79,6 @@ public class CRMS {
       System.out.println("Renter removed successfully.");
     }
   }
-  
 
   // Rent Transactions
   public void rentCar(Renter renter, Car car, double distance) {
@@ -90,6 +90,17 @@ public class CRMS {
       System.out.println("Rent successful. Rental details: " + transaction);
     } else {
       System.out.println("Car is already rented.");
+    }
+  }
+
+  public void unrentCar(Renter renter, Car carToUnrent) {
+    RentalTransaction transaction = findRentalTransaction(renter, carToUnrent);
+    if (transaction != null) {
+      rentalTransactions.remove(transaction);
+      renter.removeRentedCar(carToUnrent);
+      carToUnrent.setRented(false);
+    } else {
+      System.out.println("Rental transaction not found. Unable to unrent the car.");
     }
   }
 
@@ -119,7 +130,7 @@ public class CRMS {
       System.out.println("Rental transaction not found. Unable to add insurance.");
     }
   }
-  
+
   public double calculateTotalRentalCost(Renter renter, Car car, double distance) {
     RentalTransaction transaction = findRentalTransaction(renter, car);
     if (transaction != null) {

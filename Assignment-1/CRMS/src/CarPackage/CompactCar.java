@@ -21,8 +21,8 @@ public class CompactCar extends Car {
 
   @Override
   public double calculateTotalCost() {
-    // You need to define the formula for the total cost of CompactCar
-    return 0.0; // Placeholder, replace with actual calculation
+    // Total cost includes base rent, distance cost, and luxury tax
+    return calculateRent(getDistance());
   }
 
   @Override
@@ -40,9 +40,15 @@ public class CompactCar extends Car {
     // Define the base rent for CompactCar
     return 50.0; // Adjust as needed
   }
+
   // Other methods specific to CompactCar
   @Override
   public double getMinimumDamageCost() {
     return MINIMUM_DAMAGE_COST;
+  }
+
+  @Override
+  public String getCarType() {
+    return "Compact Car";
   }
 }

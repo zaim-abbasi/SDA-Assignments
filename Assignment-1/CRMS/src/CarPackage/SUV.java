@@ -26,7 +26,7 @@ public class SUV extends Car {
   @Override
   public double calculateTotalCost() {
     // Total cost includes base rent and distance cost
-    return calculateRent(0) + calculateInsuranceCost();
+    return calculateRent(getDistance()) + calculateInsuranceCost();
   }
 
   @Override
@@ -49,13 +49,20 @@ public class SUV extends Car {
 
   @Override
   public String toString() {
-    return super.toString() +
-        "\nInsurable: " + insurable + "\n";
+    return super.toString();
+    // +
+    // "\nInsurable: " + insurable +
+    // "\nType: SUV\n"; // Specify the type
   }
 
   @Override
   public double getMinimumDamageCost() {
     return MINIMUM_DAMAGE_COST;
+  }
+
+  @Override
+  public String getCarType() {
+    return "SUV Car";
   }
 
 }

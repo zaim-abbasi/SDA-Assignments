@@ -27,7 +27,7 @@ public class LuxuryCar extends Car {
   @Override
   public double calculateTotalCost() {
     // Total cost includes base rent, distance cost, and luxury tax
-    return calculateRent(0) + calculateInsuranceCost();
+    return calculateRent(getDistance()) + calculateInsuranceCost();
   }
 
   @Override
@@ -51,7 +51,14 @@ public class LuxuryCar extends Car {
   @Override
   public String toString() {
     return super.toString() +
-        "\nLuxury Tax: " + luxuryTax + "\n";
+        "\nLuxury Tax: " + luxuryTax;
+    // +
+    // "\nType: Luxury Car\n"; // Specify the type
+  }
+
+  @Override
+  public String getCarType() {
+    return "Luxury Car";
   }
 
   @Override
