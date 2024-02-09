@@ -1,8 +1,8 @@
 package CarPackage;
 
 public class SUV extends Car {
-  private boolean insurable;
-  private final double INSURANCE_PERCENTAGE = 0.1; // Fixed percentage for insurance
+  private final double pricePerKm = 20; // Adjust as needed
+  private final double INSURANCE_PERCENTAGE = 0.30; // Fixed percentage for insurance
   private final double MINIMUM_DAMAGE_COST = 50.0; // Adjust as needed
 
   public SUV(String carId, String brand, String model, int year, String plateNumber) {
@@ -13,20 +13,20 @@ public class SUV extends Car {
   public double calculateRent(double distance) {
     // Implement the rent calculation for SUV
     // Base rent + distance traveled cost for SUVs
-    return getBaseRent() + distance;
+    return getBaseRent() + pricePerKm * distance;
   }
 
   @Override
   public double calculateInsuranceCost() {
     // Implement the insurance cost calculation for SUV
     // Fixed percentage of the base rent
-    return getBaseRent() * INSURANCE_PERCENTAGE; // Adjust the percentage as needed
+    return (getBaseRent() + pricePerKm * getDistance()) * INSURANCE_PERCENTAGE; // Adjust the percentage as needed
   }
 
   @Override
   public double calculateTotalCost() {
     // Total cost includes base rent and distance cost
-    return calculateRent(getDistance()) + calculateInsuranceCost();
+    return calculateRent(getDistance());
   }
 
   @Override
@@ -44,7 +44,7 @@ public class SUV extends Car {
   @Override
   public double getBaseRent() {
     // Define the base rent for SUV
-    return 70.0; // Adjust as needed
+    return 50.0; // Adjust as needed
   }
 
   @Override
@@ -64,5 +64,4 @@ public class SUV extends Car {
   public String getCarType() {
     return "SUV Car";
   }
-
 }

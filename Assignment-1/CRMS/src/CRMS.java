@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import CarPackage.*;
 import RenterPackage.*;
@@ -169,8 +168,10 @@ public class CRMS {
     // but with a minimum set if damage is apparent.
     if (car.isInsurable() && transaction.isInsuranceAdded()) {
       double insuranceCost = car.calculateInsuranceCost();
-      double remainingCost = transaction.calculateTotalCost() - insuranceCost;
-      damageCost = Math.max(damageCost, car.getMinimumDamageCost());
+      double totalCost = transaction.calculateTotalCost();
+      double damageCostWithInsurance = totalCost - insuranceCost;
+      damageCost = Math.max(damageCost, damageCostWithInsurance);
+
     }
 
     return damageCost;

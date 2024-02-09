@@ -10,9 +10,9 @@ public abstract class Car {
   private String plateNumber;
   private Double distance;
 
-  private final double DAMAGE_COST_PERCENTAGE = 0.1; // 10% for example
+  private final double DAMAGE_PERCENTAGE_INSURED = 0.2; // 20% for example
 
-  private final double MINIMUM_DAMAGE_COST = 100.0; // 100 for example
+  private final double MINIMUM_DAMAGE_COST = 1000.0; // 1000 for example
 
   public Car(String carId, String brand, String model, int year, String plateNumber) {
     this.carId = carId;
@@ -94,23 +94,19 @@ public abstract class Car {
   public abstract double getMinimumDamageCost();
 
   public double calculateDamageCost() {
-    double totalCost = calculateTotalCost();
+    double TotalCost = calculateTotalCost();
+    double DamageCost_Insured = 0.0;
 
-    // For all Cars: Damage cost is a percentage of the total cost decided by the
-    // company
-    double damageCost = totalCost * DAMAGE_COST_PERCENTAGE;
-
-    // For Insured Cars: Damage cost is a percentage of the total cost minus the
-    // insurance
-    // but with a minimum set if damage is apparent.
-    if (isInsurable() && hasInsurance()) {
-      double insuranceCost = calculateInsuranceCost();
-      double remainingCost = totalCost - insuranceCost;
-      damageCost = Math.max(damageCost, MINIMUM_DAMAGE_COST);
+    if(this instanceof LuxuryCar || this instanceof SUV) {
+      if(isInsurable() && hasInsurance()) {
+        System.out.println("\nCar is Insured\n");
+        double insuranceCost = calculateInsuranceCost();
+        DamageCost_Insured = Math.max(MINIMUM_DAMAGE_COST, (DAMAGE_PERCENTAGE_INSURED * TotalCost) - insuranceCost);
+      }
     }
-
-    return damageCost;
+    return DamageCost_Insured;
   }
+
 
   public abstract double getBaseRent();
 
