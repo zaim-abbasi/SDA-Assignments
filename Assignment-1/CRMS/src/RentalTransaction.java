@@ -49,13 +49,13 @@ public class RentalTransaction {
 
   // Setters (if needed)
 
-  @Override
-  public String toString() {
-    return "RentalTransaction{" +
-        "renter=" + renter +
-        ", car=" + car +
-        ", distance=" + distance +
-        ", insuranceAdded=" + insuranceAdded +
-        '}';
-  }
+  // @Override
+  // public String toString() {
+  //   return "RentalTransaction{" +
+  //       "renter=" + renter +
+  //       ", car=" + car +
+  //       ", distance=" + distance +
+  //       ", insuranceAdded=" + insuranceAdded +
+  //       '}';
+  // }
 }

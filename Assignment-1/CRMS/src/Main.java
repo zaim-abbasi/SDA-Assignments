@@ -53,17 +53,21 @@ public class Main {
 	}
 
 	private static void displayMenu() {
-		System.out.println("\nCar Rental Management System Menu:");
-		System.out.println("1. Add new car");
-		System.out.println("2. Display available cars");
-		System.out.println("3. Remove a car (if not rented)");
-		System.out.println("4. Add new renter");
-		System.out.println("5. Display renter details");
-		System.out.println("6. Remove a renter");
-		System.out.println("7. Rent a car");
-		System.out.println("8. UnRent a car");
-		// Add more menu options...
-		System.out.println("0. Exit");
+		System.out.println("\n╔════════════════════════════════════════╗");
+		System.out.println("║         Welcome to Car Rental          ║");
+		System.out.println("║              Management System         ║");
+		System.out.println("║           Choose an option below       ║");
+		System.out.println("╠════════════════════════════════════════╣");
+		System.out.println("║ 1. Add a new car                       ║");
+		System.out.println("║ 2. Display available cars              ║");
+		System.out.println("║ 3. Remove a car (if not rented)        ║");
+		System.out.println("║ 4. Add a new renter                    ║");
+		System.out.println("║ 5. Display renter details              ║");
+		System.out.println("║ 6. Remove a renter                     ║");
+		System.out.println("║ 7. Rent a car                          ║");
+		System.out.println("║ 8. Unrent a car                        ║");
+		System.out.println("║ 0. Exit                                ║");
+		System.out.println("╚════════════════════════════════════════╝");
 		System.out.print("Enter your choice: ");
 	}
 
@@ -72,6 +76,13 @@ public class Main {
 		int carType = scanner.nextInt();
 		System.out.print("Enter car ID: ");
 		String carId = scanner.next();
+
+		// Check if the car ID already exists
+		while (crms.carIdExists(carId)) {
+			System.out.println("Car with the same ID already exists. Please enter a unique ID: ");
+			carId = scanner.next();
+		}
+
 		System.out.print("Enter car make: ");
 		String brand = scanner.next();
 		System.out.print("Enter car model: ");
@@ -125,6 +136,13 @@ public class Main {
 		int renterType = scanner.nextInt();
 		System.out.print("Enter renter ID: ");
 		String renterId = scanner.next();
+
+		// Check if renter with the same ID already exists
+		while (crms.renterIdExists(renterId)) {
+			System.out.println("Renter with the same ID already exists. Please enter a unique ID: ");
+			renterId = scanner.next();
+		}
+
 		System.out.print("Enter renter name: ");
 		String name = scanner.next();
 		System.out.print("Enter renter email: ");
@@ -195,13 +213,13 @@ public class Main {
 						crms.addInsurance(renter, car);
 					}
 
-					// Display total rental cost
-					double totalRentalCost = crms.calculateTotalRentalCost(renter, car, distance);
-					System.out.println("Total Rental Cost: " + totalRentalCost);
+					// // Display total rental cost
+					// double totalRentalCost = crms.calculateTotalRentalCost(renter, car, distance);
+					// System.out.println("Total Rental Cost: " + totalRentalCost);
 
-					// Display damage cost
-					double damageCost = crms.calculateDamageCost(renter, car);
-					System.out.println("Damage Cost: " + damageCost);
+					// // Display damage cost
+					// double damageCost = crms.calculateDamageCost(renter, car);
+					// System.out.println("Damage Cost: " + damageCost);
 				} else {
 					System.out.println("Car with ID " + carId + " not found.");
 				}

@@ -17,7 +17,20 @@ public class CRMS {
 
   // Car Management
   public void addNewCar(Car car) {
-    cars.add(car);
+    if (!carIdExists(car.getCarId())) {
+      cars.add(car);
+    } else {
+      System.out.println("Car with the same ID already exists. Please enter a unique ID.");
+    }
+  }
+  
+  public boolean renterIdExists(String renterId) {
+    for (Renter renter : renters) {
+      if (renter.getRenterId().equals(renterId)) {
+        return true; // Renter with the same ID already exists
+      }
+    }
+    return false; // Renter with the given ID does not exist
   }
 
   public Renter findRenterById(String renterId) {
@@ -58,9 +71,12 @@ public class CRMS {
     return null;
   }
 
-  // Renter Management
   public void addNewRenter(Renter renter) {
-    renters.add(renter);
+    if (!renterIdExists(renter.getRenterId())) {
+      renters.add(renter);
+    } else {
+      System.out.println("Renter with the same ID already exists. Please choose a different ID.");
+    }
   }
 
   public void displayRenterDetails() {
@@ -86,7 +102,7 @@ public class CRMS {
       rentalTransactions.add(transaction);
       renter.addRentedCar(car);
       car.setRented(true);
-      System.out.println("Rent successful. Rental details: " + transaction);
+      System.out.println("Rent successful.");
     } else {
       System.out.println("Car is already rented.");
     }
@@ -103,9 +119,9 @@ public class CRMS {
     }
   }
 
-  public void displayRentalDetails(RentalTransaction transaction) {
-    System.out.println("Rental Details: " + transaction);
-  }
+  // public void displayRentalDetails(RentalTransaction transaction) {
+  //   System.out.println("Rental Details: " + transaction);
+  // }
 
   public double calculateTotalRentalCost(RentalTransaction transaction) {
     return transaction.calculateTotalCost();
@@ -148,6 +164,15 @@ public class CRMS {
       System.out.println("Rental transaction not found. Unable to calculate damage cost.");
       return 0.0;
     }
+  }
+
+  public boolean carIdExists(String carId) {
+    for (Car car : cars) {
+      if (car.getCarId().equals(carId)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private RentalTransaction findRentalTransaction(Renter renter, Car car) {

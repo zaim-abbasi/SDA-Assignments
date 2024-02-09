@@ -44,7 +44,8 @@ public class CorporateRenter extends Renter {
       if (numberOfCarsRented > 0) {
         result.append(numberOfCarsRented);
         for (Car rentedCar : getRentedCars()) {
-          result.append("\n[Car ID: ").append(rentedCar.getCarId())
+          result.append("\n[Car Type: ").append(rentedCar.getCarType())
+              .append(", Car ID: ").append(rentedCar.getCarId())
               .append(", Brand: ").append(rentedCar.getBrand())
               .append(", Model: ").append(rentedCar.getModel())
               .append(", Year: ").append(rentedCar.getYear())
