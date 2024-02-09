@@ -3,7 +3,7 @@ package CarPackage;
 public class LuxuryCar extends Car {
   private double luxuryTax;
   private final double INSURANCE_PERCENTAGE = 0.1; // Fixed percentage for insurance i.e. 10%
-  private final double MINIMUM_DAMAGE_COST = 100.0; // Adjust as needed
+  private final double MINIMUM_DAMAGE_COST = 500.0; // Adjust as needed
 
   private final double pricePerKm = 15; // Adjust as needed
   private final double baseRent = 40.0; // Adjust as needed

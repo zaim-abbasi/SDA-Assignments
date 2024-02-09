@@ -12,7 +12,7 @@ public abstract class Car {
 
   private final double DAMAGE_PERCENTAGE_INSURED = 0.2; // 20% for example
 
-  private final double MINIMUM_DAMAGE_COST = 1000.0; // 1000 for example
+  private final double MINIMUM_DAMAGE_COST = 500.0;
 
   public Car(String carId, String brand, String model, int year, String plateNumber) {
     this.carId = carId;

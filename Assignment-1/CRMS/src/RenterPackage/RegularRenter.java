@@ -38,8 +38,6 @@ public class RegularRenter extends Renter {
       result.append("\nCars Rented: ");
       if (numberOfCarsRented > 0) {
         result.append(numberOfCarsRented);
-        double totalFare = 0.0;
-        double totalDamageCost = 0.0;
         for (Car rentedCar : getRentedCars()) {
           result.append("\n[Car Type: ").append(rentedCar.getCarType())
               .append(", Car ID: ").append(rentedCar.getCarId())
