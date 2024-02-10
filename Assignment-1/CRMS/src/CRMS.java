@@ -23,7 +23,7 @@ public class CRMS {
       System.out.println("Car with the same ID already exists. Please enter a unique ID.");
     }
   }
-  
+
   public boolean renterIdExists(String renterId) {
     for (Renter renter : renters) {
       if (renter.getRenterId().equals(renterId)) {
@@ -202,5 +202,14 @@ public class CRMS {
     return damageCost;
   }
 
+  // function to display all the rental transactions
+  public void displayRentalTransactions() {
+    System.out.println("Rental Transactions:");
+    for (RentalTransaction transaction : rentalTransactions) {
+      System.out.println(transaction);
+    }
+  }
+
   // Other methods for managing the car rental system
 }
+

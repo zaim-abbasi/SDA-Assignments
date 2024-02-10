@@ -41,6 +41,9 @@ public class Main {
 					unrentCar(scanner, crms);
 					break;
 				// Add more cases for additional functionalities...
+				case 9:
+					crms.displayRentalTransactions();
+					break;
 				case 0:
 					System.out.println("Exiting the program. Goodbye!");
 					break;
@@ -54,20 +57,21 @@ public class Main {
 
 	private static void displayMenu() {
 		System.out.println("\n╔════════════════════════════════════════╗");
-		System.out.println("║         Welcome to Car Rental          ║");
-		System.out.println("║              Management System         ║");
-		System.out.println("║           Choose an option below       ║");
-		System.out.println("╠════════════════════════════════════════╣");
-		System.out.println("║ 1. Add a new car                       ║");
-		System.out.println("║ 2. Display available cars              ║");
-		System.out.println("║ 3. Remove a car (if not rented)        ║");
-		System.out.println("║ 4. Add a new renter                    ║");
-		System.out.println("║ 5. Display renter details              ║");
-		System.out.println("║ 6. Remove a renter                     ║");
-		System.out.println("║ 7. Rent a car                          ║");
-		System.out.println("║ 8. Unrent a car                        ║");
-		System.out.println("║ 0. Exit                                ║");
-		System.out.println("╚════════════════════════════════════════╝");
+		System.out.println(  "║         Welcome to Car Rental          ║");
+		System.out.println(  "║              Management System         ║");
+		System.out.println(  "║           Choose an option below       ║");
+		System.out.println(  "╠════════════════════════════════════════╣");
+		System.out.println(  "║ 1. Add a new car                       ║");
+		System.out.println(  "║ 2. Display available cars              ║");
+		System.out.println(  "║ 3. Remove a car (if not rented)        ║");
+		System.out.println(  "║ 4. Add a new renter                    ║");
+		System.out.println(  "║ 5. Display renter details              ║");
+		System.out.println(  "║ 6. Remove a renter                     ║");
+		System.out.println(  "║ 7. Rent a car                          ║");
+		System.out.println(  "║ 8. Unrent a car                        ║");
+		System.out.println(  "║ 9. Display all Rental Transactions     ║");
+		System.out.println(  "║ 0. Exit                                ║");
+		System.out.println(  "╚════════════════════════════════════════╝");
 		System.out.print("Enter your choice: ");
 	}
 
@@ -212,14 +216,9 @@ public class Main {
 					if (addInsuranceChoice == 1) {
 						crms.addInsurance(renter, car);
 					}
+					System.out.println("Car rented successfully.");
+					System.out.println("Total rent: " + car.calculateRent(distance));
 
-					// // Display total rental cost
-					// double totalRentalCost = crms.calculateTotalRentalCost(renter, car, distance);
-					// System.out.println("Total Rental Cost: " + totalRentalCost);
-
-					// // Display damage cost
-					// double damageCost = crms.calculateDamageCost(renter, car);
-					// System.out.println("Damage Cost: " + damageCost);
 				} else {
 					System.out.println("Car with ID " + carId + " not found.");
 				}

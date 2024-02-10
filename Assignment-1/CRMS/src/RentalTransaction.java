@@ -58,4 +58,15 @@ public class RentalTransaction {
   //       ", insuranceAdded=" + insuranceAdded +
   //       '}';
   // }
+
+  @Override
+  public String toString() {
+    return String.format("Rental Transaction Details:%n" +
+        "Renter ID: %s%n" +
+        "Car ID: %s%n" +
+        "Distance Traveled: %.2f km%n" +
+        "Insurance Added: %s%n",
+        renter.getRenterId(), car.getCarId(), distance, insuranceAdded ? "Yes" : "No");
+  }
+  
 }
