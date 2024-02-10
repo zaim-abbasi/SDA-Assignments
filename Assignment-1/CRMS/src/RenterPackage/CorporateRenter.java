@@ -16,10 +16,7 @@ public class CorporateRenter extends Renter {
 
   @Override
   public double calculateDiscountedRate(double baseRent) {
-    // Corporate renters have special rates
-    // You can define the discount logic based on corporate rules
-    // For example, apply a fixed discount percentage for corporate renters
-    return baseRent * 0.9; // 10% discount for illustration
+    return baseRent * 0.9;
   }
 
   public String getRenterType() {
@@ -27,7 +24,7 @@ public class CorporateRenter extends Renter {
   }
 
   private double calculateLuxuryAndSUVDamageCost(Car rentedCar) {
-    // Check if the rented car is LuxuryCar or SUV to calculate damage cost
+    // Check if the rented car is LuxuryCar or SUV
     if (rentedCar instanceof LuxuryCar || rentedCar instanceof SUV) {
       return rentedCar.calculateDamageCost();
     }
@@ -53,7 +50,7 @@ public class CorporateRenter extends Renter {
 
           result.append("]");
 
-          // Use the helper method to calculate damage cost for LuxuryCar and SUV
+          //helper method to calculate damage cost for LuxuryCar and SUV
           double damageCost = calculateLuxuryAndSUVDamageCost(rentedCar);
 
           double corpDiscount = rentedCar.calculateTotalCost();
@@ -76,7 +73,4 @@ public class CorporateRenter extends Renter {
 
     return result.toString();
   }
-
-  // Additional properties and methods specific to CorporateRenter
-  // ...
 }

@@ -61,7 +61,7 @@ public class CRMS {
     }
   }
 
-  // Additional methods for finding a car by ID
+  // finding a car by ID
   public Car findCarById(String carId) {
     for (Car car : cars) {
       if (car.getCarId().equals(carId)) {
@@ -118,10 +118,6 @@ public class CRMS {
       System.out.println("Rental transaction not found. Unable to unrent the car.");
     }
   }
-
-  // public void displayRentalDetails(RentalTransaction transaction) {
-  //   System.out.println("Rental Details: " + transaction);
-  // }
 
   public double calculateTotalRentalCost(RentalTransaction transaction) {
     return transaction.calculateTotalCost();
@@ -188,9 +184,7 @@ public class CRMS {
     Car car = transaction.getCar();
     double damageCost = car.calculateDamageCost();
 
-    // For Insured Cars: Damage cost is a percentage of the total cost minus the
-    // insurance
-    // but with a minimum set if damage is apparent.
+    // For Insured Cars: Damage cost is a percentage of the total cost minus the insurance cost
     if (car.isInsurable() && transaction.isInsuranceAdded()) {
       double insuranceCost = car.calculateInsuranceCost();
       double totalCost = transaction.calculateTotalCost();
@@ -209,7 +203,5 @@ public class CRMS {
       System.out.println(transaction);
     }
   }
-
-  // Other methods for managing the car rental system
 }
 

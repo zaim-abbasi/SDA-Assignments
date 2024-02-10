@@ -20,7 +20,7 @@ public abstract class Renter {
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.address = address;
-    this.totalRentalFee = 0.0; // Initialize total rental fee
+    this.totalRentalFee = 0.0;
     this.rentedCars = new ArrayList<>(); // Initialize rentedCars list
   }
 
@@ -30,7 +30,6 @@ public abstract class Renter {
     return rentedCars != null && !rentedCars.isEmpty();
   }
 
-  // all getters
   public String getRenterId() {
     return renterId;
   }
@@ -59,7 +58,6 @@ public abstract class Renter {
     return address;
   }
 
-  // all setters
   public void setRenterId(String renterId) {
     this.renterId = renterId;
   }

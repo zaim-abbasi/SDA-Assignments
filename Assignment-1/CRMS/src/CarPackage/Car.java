@@ -23,7 +23,7 @@ public abstract class Car {
     this.rentalStatus = false; // Initially not rented
   }
 
-  // getters, setters, and other methods
+  // getters, setters
   public String getCarId() {
     return carId;
   }
@@ -52,7 +52,6 @@ public abstract class Car {
     return plateNumber;
   }
 
-  // all setters
   public void setCarId(String carId) {
     this.carId = carId;
   }
@@ -97,8 +96,8 @@ public abstract class Car {
     double TotalCost = calculateTotalCost();
     double DamageCost_Insured = 0.0;
 
-    if(this instanceof LuxuryCar || this instanceof SUV) {
-      if(isInsurable() && hasInsurance()) {
+    if (this instanceof LuxuryCar || this instanceof SUV) {
+      if (isInsurable() && hasInsurance()) {
         System.out.println("\nCar is Insured\n");
         double insuranceCost = calculateInsuranceCost();
         DamageCost_Insured = Math.max(MINIMUM_DAMAGE_COST, (DAMAGE_PERCENTAGE_INSURED * TotalCost) - insuranceCost);
@@ -106,7 +105,6 @@ public abstract class Car {
     }
     return DamageCost_Insured;
   }
-
 
   public abstract double getBaseRent();
 
@@ -120,7 +118,7 @@ public abstract class Car {
         "\nPlate Number: " + plateNumber;
   }
 
-  public abstract String getCarType(); // Abstract method to be implemented in each subclass
+  public abstract String getCarType();
 
   public void setRented(boolean rentalStatus) {
     this.rentalStatus = rentalStatus;

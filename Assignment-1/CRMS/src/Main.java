@@ -40,7 +40,6 @@ public class Main {
 				case 8:
 					unrentCar(scanner, crms);
 					break;
-				// Add more cases for additional functionalities...
 				case 9:
 					crms.displayRentalTransactions();
 					break;
@@ -76,6 +75,7 @@ public class Main {
 	}
 
 	private static void addNewCar(Scanner scanner, CRMS crms) {
+		// adds a new car to the system
 		System.out.print("Enter car type (1. Compact, 2. Luxury, 3. SUV): ");
 		int carType = scanner.nextInt();
 		System.out.print("Enter car ID: ");
@@ -128,6 +128,7 @@ public class Main {
 		String carId = scanner.next();
 		Car carToRemove = crms.findCarById(carId);
 
+		// if car is not rented, remove it
 		if (carToRemove != null) {
 			crms.removeCar(carToRemove);
 		} else {
@@ -136,12 +137,13 @@ public class Main {
 	}
 
 	private static void addNewRenter(Scanner scanner, CRMS crms) {
+		// adds a new renter to the system
 		System.out.print("Enter renter type (1. Regular, 2. Frequent, 3. Corporate): ");
 		int renterType = scanner.nextInt();
 		System.out.print("Enter renter ID: ");
 		String renterId = scanner.next();
 
-		// Check if renter with the same ID already exists
+		// Check if renter ID already exists
 		while (crms.renterIdExists(renterId)) {
 			System.out.println("Renter with the same ID already exists. Please enter a unique ID: ");
 			renterId = scanner.next();
@@ -157,6 +159,7 @@ public class Main {
 		String address = scanner.next();
 
 		Renter renter = null;
+
 		switch (renterType) {
 			case 1:
 				renter = new RegularRenter(renterId, name, email, phoneNumber, address);
@@ -198,7 +201,7 @@ public class Main {
 		 System.out.print("Enter renter ID: "); 
 		 String renterId = scanner.next(); 
 		 Renter renter = crms.findRenterById(renterId);
-		 	if (renter != null) {
+			if (renter != null) { 	// check if renter exists
 				System.out.print("Enter car ID: ");
 				String carId = scanner.next();
 				Car car = crms.findCarById(carId);
@@ -210,7 +213,6 @@ public class Main {
 					car.setDistance(distance);
 					crms.rentCar(renter, car, distance);
 
-					// Provide an option to add insurance
 					System.out.print("Do you want to add insurance? (1. Yes, 2. No): ");
 					int addInsuranceChoice = scanner.nextInt();
 					if (addInsuranceChoice == 1) {
@@ -222,7 +224,8 @@ public class Main {
 				} else {
 					System.out.println("Car with ID " + carId + " not found.");
 				}
-			} else {
+			} 
+			else {
 				System.out.println("Renter with ID " + renterId + " not found.");
 			}
 		}
@@ -247,8 +250,6 @@ public class Main {
 			System.out.println("Renter with ID " + renterId + " not found or has no rented cars.");
 		}
 	}
-
-	// Implement additional methods for other functionalities...
 	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();

@@ -1,16 +1,17 @@
 package CarPackage;
 
 public class CompactCar extends Car {
-  // private final double MINIMUM_DAMAGE_COST = 200.0; // Adjust as needed
-  private final double pricePerKm = 10; // Adjust as needed
-  private final double baseRent = 30.0; // Adjust as needed
+
+  private final double pricePerKm = 10;
+  private final double baseRent = 30.0;
+
   public CompactCar(String carId, String brand, String model, int year, String plateNumber) {
     super(carId, brand, model, year, plateNumber);
   }
 
   @Override
   public double calculateRent(double distance) {
-    return (baseRent*distance) + (pricePerKm * distance);
+    return (baseRent * distance) + (pricePerKm * distance);
   }
 
   @Override
@@ -21,7 +22,6 @@ public class CompactCar extends Car {
 
   @Override
   public double calculateTotalCost() {
-    // Total cost includes base rent, distance cost, and luxury tax
     return calculateRent(getDistance());
   }
 
@@ -37,12 +37,9 @@ public class CompactCar extends Car {
 
   @Override
   public double getBaseRent() {
-    // Define the base rent for CompactCar
     return baseRent;
   }
-  
 
-  // Other methods specific to CompactCar
   @Override
   public double getMinimumDamageCost() {
     return 0.0; // No minimum damage cost for CompactCar

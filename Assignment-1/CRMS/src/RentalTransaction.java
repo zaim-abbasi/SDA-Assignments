@@ -35,6 +35,7 @@ public class RentalTransaction {
     return renter;
   }
 
+
   public Car getCar() {
     return car;
   }
@@ -47,26 +48,13 @@ public class RentalTransaction {
     return insuranceAdded;
   }
 
-  // Setters (if needed)
-
-  // @Override
-  // public String toString() {
-  //   return "RentalTransaction{" +
-  //       "renter=" + renter +
-  //       ", car=" + car +
-  //       ", distance=" + distance +
-  //       ", insuranceAdded=" + insuranceAdded +
-  //       '}';
-  // }
-
   @Override
   public String toString() {
-    return String.format("Rental Transaction Details:%n" +
-        "Renter ID: %s%n" +
-        "Car ID: %s%n" +
-        "Distance Traveled: %.2f km%n" +
-        "Insurance Added: %s%n",
-        renter.getRenterId(), car.getCarId(), distance, insuranceAdded ? "Yes" : "No");
+    return "Rental Transaction Details:" +
+        "\nRenter ID: " + renter.getRenterId() +
+        "\nCar ID: " + car.getCarId() +
+        "\nDistance Traveled: " + String.format("%.2f", distance) + " km" +
+        "\nInsurance Added: " + (insuranceAdded ? "Yes" : "No");
   }
   
 }

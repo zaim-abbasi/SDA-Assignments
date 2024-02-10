@@ -66,8 +66,4 @@ public class RegularRenter extends Renter {
 
     return result.toString();
   }
-
-
-  // Additional properties and methods specific to RegularRenter
-  // ...
 }
