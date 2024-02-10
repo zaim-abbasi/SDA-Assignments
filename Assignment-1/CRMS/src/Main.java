@@ -4,7 +4,7 @@ import RenterPackage.*;
 import java.util.Scanner;
 
 public class Main {
-	
+
 	public static void main(String[] args) {
 		clearScreen();
 		Scanner scanner = new Scanner(System.in);
@@ -44,10 +44,14 @@ public class Main {
 					crms.displayRentalTransactions();
 					break;
 				case 0:
-					System.out.println("Exiting the program. Goodbye!");
+					System.out.println("\n╔════════════════════════════════════════╗");
+					System.out.println("║      Exiting the program. Goodbye!     ║");
+					System.out.println("╚════════════════════════════════════════╝");
 					break;
 				default:
-					System.out.println("Invalid choice. Please try again.");
+					System.out.println("\n╔════════════════════════════════════════╗");
+					System.out.println("║    Invalid choice. Please try again.   ║");
+					System.out.println("╚════════════════════════════════════════╝");
 			}
 		} while (choice != 0);
 
@@ -56,28 +60,33 @@ public class Main {
 
 	private static void displayMenu() {
 		System.out.println("\n╔════════════════════════════════════════╗");
-		System.out.println(  "║         Welcome to Car Rental          ║");
-		System.out.println(  "║              Management System         ║");
-		System.out.println(  "║           Choose an option below       ║");
-		System.out.println(  "╠════════════════════════════════════════╣");
-		System.out.println(  "║ 1. Add a new car                       ║");
-		System.out.println(  "║ 2. Display available cars              ║");
-		System.out.println(  "║ 3. Remove a car (if not rented)        ║");
-		System.out.println(  "║ 4. Add a new renter                    ║");
-		System.out.println(  "║ 5. Display renter details              ║");
-		System.out.println(  "║ 6. Remove a renter                     ║");
-		System.out.println(  "║ 7. Rent a car                          ║");
-		System.out.println(  "║ 8. Unrent a car                        ║");
-		System.out.println(  "║ 9. Display all Rental Transactions     ║");
-		System.out.println(  "║ 0. Exit                                ║");
-		System.out.println(  "╚════════════════════════════════════════╝");
+		System.out.println("║         Welcome to Car Rental          ║");
+		System.out.println("║              Management System         ║");
+		System.out.println("║           Choose an option below       ║");
+		System.out.println("╠════════════════════════════════════════╣");
+		System.out.println("║ 1. Add a new car                       ║");
+		System.out.println("║ 2. Display available cars              ║");
+		System.out.println("║ 3. Remove a car (if not rented)        ║");
+		System.out.println("║ 4. Add a new renter                    ║");
+		System.out.println("║ 5. Display renter details              ║");
+		System.out.println("║ 6. Remove a renter                     ║");
+		System.out.println("║ 7. Rent a car                          ║");
+		System.out.println("║ 8. Unrent a car                        ║");
+		System.out.println("║ 9. Display all Rental Transactions     ║");
+		System.out.println("║ 0. Exit                                ║");
+		System.out.println("╚════════════════════════════════════════╝");
 		System.out.print("Enter your choice: ");
 	}
 
 	private static void addNewCar(Scanner scanner, CRMS crms) {
-		// adds a new car to the system
+		System.out.println("\n╔════════════════════════════════════════╗");
+		System.out.println("║               Add a New Car            ║");
+		System.out.println("╚════════════════════════════════════════╝");
+
+		// Get car details from the user
 		System.out.print("Enter car type (1. Compact, 2. Luxury, 3. SUV): ");
 		int carType = scanner.nextInt();
+
 		System.out.print("Enter car ID: ");
 		String carId = scanner.next();
 
@@ -89,13 +98,17 @@ public class Main {
 
 		System.out.print("Enter car make: ");
 		String brand = scanner.next();
+
 		System.out.print("Enter car model: ");
 		String model = scanner.next();
+
 		System.out.print("Enter car year: ");
 		int year = scanner.nextInt();
+
 		System.out.print("Enter car plate number: ");
 		String plateNumber = scanner.next();
 
+		// Create a new car based on the type
 		Car car = null;
 		switch (carType) {
 			case 1:
@@ -110,9 +123,11 @@ public class Main {
 				car = new SUV(carId, brand, model, year, plateNumber);
 				break;
 			default:
-				System.out.print("Invalid car type.");
+				System.out.println("Invalid car type. Car not added.");
+				return; // Exit the function if the car type is invalid
 		}
 
+		// Add the new car to the system
 		if (car != null) {
 			crms.addNewCar(car);
 			System.out.println("Car added successfully.");
@@ -124,6 +139,10 @@ public class Main {
 	}
 
 	private static void removeCar(Scanner scanner, CRMS crms) {
+		System.out.println("\n╔════════════════════════════════════════╗");
+		System.out.println(  "║               Remove a Car             ║");
+		System.out.println(  "╚════════════════════════════════════════╝");
+
 		System.out.println("\nEnter the ID of the car to be removed: ");
 		String carId = scanner.next();
 		Car carToRemove = crms.findCarById(carId);
@@ -137,6 +156,9 @@ public class Main {
 	}
 
 	private static void addNewRenter(Scanner scanner, CRMS crms) {
+		System.out.println("\n╔════════════════════════════════════════╗");
+		System.out.println(  "║              Add new Renter            ║");
+		System.out.println(  "╚════════════════════════════════════════╝");
 		// adds a new renter to the system
 		System.out.print("Enter renter type (1. Regular, 2. Frequent, 3. Corporate): ");
 		int renterType = scanner.nextInt();
@@ -187,6 +209,11 @@ public class Main {
 	}
 
 	private static void removeRenter(Scanner scanner, CRMS crms) {
+
+		System.out.println("\n╔════════════════════════════════════════╗");
+		System.out.println(  "║             Remove a Renter            ║");
+		System.out.println(  "╚════════════════════════════════════════╝");
+
 		System.out.println("\nEnter the ID of the renter to be removed: ");
 		String renterId = scanner.next();
 		Renter renterToRemove = crms.findRenterById(renterId);
@@ -197,40 +224,46 @@ public class Main {
 			System.out.println("Renter with ID " + renterId + " not found.");
 		}
 	}
+
 	public static void rentCar(Scanner scanner, CRMS crms) {
-		 System.out.print("Enter renter ID: "); 
-		 String renterId = scanner.next(); 
-		 Renter renter = crms.findRenterById(renterId);
-			if (renter != null) { 	// check if renter exists
-				System.out.print("Enter car ID: ");
-				String carId = scanner.next();
-				Car car = crms.findCarById(carId);
+		System.out.println("\n╔════════════════════════════════════════╗");
+		System.out.println(  "║                Rent a Car              ║");
+		System.out.println(  "╚════════════════════════════════════════╝");
+		System.out.print("Enter renter ID: ");
+		String renterId = scanner.next();
+		Renter renter = crms.findRenterById(renterId);
+		if (renter != null) { // check if renter exists
+			System.out.print("Enter car ID: ");
+			String carId = scanner.next();
+			Car car = crms.findCarById(carId);
 
-				if (car != null) {
-					System.out.print("Enter distance to be traveled: ");
-					double distance = scanner.nextDouble();
-					// set distance to car
-					car.setDistance(distance);
-					crms.rentCar(renter, car, distance);
+			if (car != null) {
+				System.out.print("Enter distance to be traveled: ");
+				double distance = scanner.nextDouble();
+				// set distance to car
+				car.setDistance(distance);
+				crms.rentCar(renter, car, distance);
 
-					System.out.print("Do you want to add insurance? (1. Yes, 2. No): ");
-					int addInsuranceChoice = scanner.nextInt();
-					if (addInsuranceChoice == 1) {
-						crms.addInsurance(renter, car);
-					}
-					System.out.println("Car rented successfully.");
-					System.out.println("Total rent: " + car.calculateRent(distance));
-
-				} else {
-					System.out.println("Car with ID " + carId + " not found.");
+				System.out.print("Do you want to add insurance? (1. Yes, 2. No): ");
+				int addInsuranceChoice = scanner.nextInt();
+				if (addInsuranceChoice == 1) {
+					crms.addInsurance(renter, car);
 				}
-			} 
-			else {
-				System.out.println("Renter with ID " + renterId + " not found.");
+				System.out.println("Car rented successfully.");
+				System.out.println("Total rent: " + car.calculateRent(distance));
+
+			} else {
+				System.out.println("Car with ID " + carId + " not found.");
 			}
+		} else {
+			System.out.println("Renter with ID " + renterId + " not found.");
 		}
+	}
 
 	private static void unrentCar(Scanner scanner, CRMS crms) {
+		System.out.println("\n╔════════════════════════════════════════╗");
+		System.out.println(  "║               UnRent a Car             ║");
+		System.out.println(  "╚════════════════════════════════════════╝");
 		System.out.print("Enter renter ID: ");
 		String renterId = scanner.next();
 		Renter renter = crms.findRenterById(renterId);
@@ -250,6 +283,7 @@ public class Main {
 			System.out.println("Renter with ID " + renterId + " not found or has no rented cars.");
 		}
 	}
+
 	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();

@@ -43,7 +43,10 @@ public class CRMS {
   }
 
   public void displayAvailableCars() {
-    System.out.println("Available Cars:");
+    System.out.println("\n╔════════════════════════════════════════╗");
+    System.out.println(  "║              Available Cars            ║");
+    System.out.println(  "╚════════════════════════════════════════╝");
+
     for (Car car : cars) {
       if (!car.isRented()) {
         System.out.println(car);
@@ -80,7 +83,9 @@ public class CRMS {
   }
 
   public void displayRenterDetails() {
-    System.out.println("Renter Details:");
+    System.out.println("\n╔════════════════════════════════════════╗");
+    System.out.println(  "║              Renter Details            ║");
+    System.out.println(  "╚════════════════════════════════════════╝");
     for (Renter renter : renters) {
       System.out.println(renter);
     }
@@ -198,7 +203,9 @@ public class CRMS {
 
   // function to display all the rental transactions
   public void displayRentalTransactions() {
-    System.out.println("Rental Transactions:");
+    System.out.println("\n╔════════════════════════════════════════╗");
+    System.out.println(  "║            Rental Transactions         ║");
+    System.out.println(  "╚════════════════════════════════════════╝");
     for (RentalTransaction transaction : rentalTransactions) {
       System.out.println(transaction);
     }

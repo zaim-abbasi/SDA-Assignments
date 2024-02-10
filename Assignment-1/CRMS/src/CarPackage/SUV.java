@@ -18,7 +18,7 @@ public class SUV extends Car {
 
   @Override
   public double calculateInsuranceCost() {
-    return (getBaseRent() + pricePerKm * getDistance()) * INSURANCE_PERCENTAGE; // Adjust the percentage as needed
+    return (getBaseRent() * getDistance()) * INSURANCE_PERCENTAGE; // Adjust the percentage as needed
   }
 
   @Override
